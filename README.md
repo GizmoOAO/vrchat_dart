@@ -2,7 +2,7 @@
 
 An unofficial Dart library for VRChat API.
 
-[![test package](https://github.com/GizmoOAO/vrchat_dart/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/GizmoOAO/vrchat_dart/actions/workflows/test.yml)
+[![test package](https://img.shields.io/github/workflow/status/GizmoOAO/vrchat_dart/test%20package/main?label=test%20package&style=flat-square)](https://github.com/GizmoOAO/vrchat_dart/actions/workflows/test-package.yml)
 [![Dart Version](https://img.shields.io/badge/Dart-2.10.0-blue.svg?style=flat-square)](https://dart.dev)
 [![License](https://img.shields.io/github/license/GizmoOAO/vrchat_dart?style=flat-square)](./LICENSE)
 
