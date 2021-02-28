@@ -56,8 +56,8 @@ class HttpUtils {
       var response = await dio.request(url,
           data: data, queryParameters: params, options: options);
       result = response.data;
-    } on DioError catch (e) {
-      print(e.toString());
+    } on DioError catch (_) {
+      rethrow;
     }
 
     return result;
