@@ -1,0 +1,25 @@
+name: test package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: test package
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:2.10.0
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+          run: dart pub get
+
+      - name: Run tests
+        env:
+          VRC_USERNAME: ${{ secrets.VRC_USERNAME }}
+          VRC_PASSWORD: ${{ secrets.VRC_PASSWORD }}
+        run: dart test
