@@ -55,7 +55,7 @@ void main() {
   });
 
   test('FavoriteAPI Test', () async {
-    var favoriteFriends = await favoriteAPI.list(favoriteAPI.friend);
+    var favoriteFriends = await favoriteAPI.list(favoriteAPI.world);
     expect(favoriteFriends.length, 3);
   });
 }
