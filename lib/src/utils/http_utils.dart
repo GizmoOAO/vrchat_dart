@@ -37,13 +37,23 @@ class HttpUtils {
     _instance = null;
   }
 
-  static Future<dynamic> request(String url,
-      {data, params, String method, BasicAuth basicAuth}) async {
+  static Future<dynamic> request(
+    String url, {
+    Map<String, dynamic> data,
+    Map<String, String> params,
+    Map<String, dynamic> urlParams,
+    String method,
+    BasicAuth basicAuth,
+  }) async {
     data = data ?? {};
+    params = params ?? {};
+    urlParams = urlParams ?? {};
     method = method ?? GET;
 
-    data.forEach((key, value) =>
-        {if (url.contains(key)) url.replaceAll(':$key', value.toString())});
+    urlParams.forEach((key, value) => {
+          if (url.contains(':$key'))
+            url = url.replaceAll(':$key', value.toString())
+        });
 
     var dio = instance();
     var result;
