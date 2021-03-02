@@ -55,7 +55,20 @@ void main() {
   });
 
   test('FavoriteAPI Test', () async {
-    var favoriteFriends = await favoriteAPI.list(favoriteAPI.world);
-    expect(favoriteFriends.length, 3);
+    var favoriteWorlds = await favoriteAPI.list(favoriteAPI.world);
+    expect(favoriteWorlds.length, 3);
+
+    var favoriteWorld = await favoriteAPI.add(
+      'wrld_7f946760-c98f-4f56-b5c9-1c010700a228',
+      favoriteAPI.world,
+      ['worlds1'],
+    );
+    expect(favoriteWorld.type, favoriteAPI.world);
+
+    favoriteWorld = await favoriteAPI.get(favoriteWorld.id);
+    expect(favoriteWorld.type, favoriteAPI.world);
+
+    var ok = await favoriteAPI.delete(favoriteWorld.id);
+    expect(ok, isTrue);
   });
 }
