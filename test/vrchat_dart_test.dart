@@ -20,17 +20,17 @@ void main() {
   });
 
   test('SystemAPI Test', () async {
-    var visits = await systemAPI.Visits();
+    var visits = await systemAPI.visits();
     expect(visits > -1, isTrue);
 
-    var systemTime = await systemAPI.Time();
+    var systemTime = await systemAPI.time();
     var localTime = DateTime.now().toUtc();
     if (localTime.hour < 23) {
       expect(DateFormat('yyyy-MM-dd').format(systemTime.toUtc()),
           DateFormat('yyyy-MM-dd').format(localTime));
     }
 
-    var config = await systemAPI.RemoteConfig();
+    var config = await systemAPI.remoteConfig();
     expect(config.messageOfTheDay, 'hello world');
   });
 
