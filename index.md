@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+# VRChat Dart Package
 
-You can use the [editor on GitHub](https://github.com/GizmoOAO/vrchat_dart/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+An unofficial Dart library for VRChat API.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[![test package](https://img.shields.io/github/workflow/status/GizmoOAO/vrchat_dart/test%20package/main?label=test%20package&style=flat-square)](https://github.com/GizmoOAO/vrchat_dart/actions/workflows/test-package.yml)
+[![Dart Version](https://img.shields.io/badge/Dart-2.10.0-blue.svg?style=flat-square)](https://dart.dev)
+[![License](https://img.shields.io/github/license/GizmoOAO/vrchat_dart?style=flat-square)](https://github.com/GizmoOAO/vrchat_dart/blob/main/LICENSE)
 
-### Markdown
+## Disclaimer
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This is the official response of the VRChat Team (from Tupper more specifically) on the usage of the VRChat API.
 
-```markdown
-Syntax highlighted code block
+> Use of the API using applications other than the approved methods (website, VRChat application) are not officially supported. You may use the API for your own application, but keep these guidelines in mind:
+> * We do not provide documentation or support for the API.
+> * Do not make queries to the API more than once per 60 seconds.
+> * Abuse of the API may result in account termination.
+> * Access to API endpoints may break at any given time, with no warning.
 
-# Header 1
-## Header 2
-### Header 3
+## Usage
 
-- Bulleted
-- List
+A simple usage example:
 
-1. Numbered
-2. List
+```dart
+import 'package:vrchat_dart/vrchat_dart.dart' as vrchat;
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+void main() {
+  var systemAPI = vrchat.SystemAPI();
+  systemAPI.time().then((value) => print('ServerTime: ${value.toLocal()}'));
+  systemAPI.visits().then((value) => print('Visits: $value'));
+}
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Thanks
 
-### Jekyll Themes
+- [vrchatapi.github.io](https://github.com/vrchatapi/vrchatapi.github.io)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/GizmoOAO/vrchat_dart/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Features and bugs
 
-### Support or Contact
+Please file feature requests and bugs at the [issue tracker][tracker].
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[tracker]: https://github.com/GizmoOAO/vrchat_dart/issues
