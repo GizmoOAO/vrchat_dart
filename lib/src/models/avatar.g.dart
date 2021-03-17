@@ -13,63 +13,45 @@ Avatar _$AvatarFromJson(Map<String, dynamic> json) {
     json['description'] as String,
     json['authorId'] as String,
     json['authorName'] as String,
-    (json['tags'] as List)?.map((e) => e as String)?.toList(),
+    (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
     json['assetUrl'] as String,
-    json['assetUrlObject'] == null
-        ? null
-        : AssetUrlObject.fromJson(
-            json['assetUrlObject'] as Map<String, dynamic>),
+    AssetUrlObject.fromJson(json['assetUrlObject'] as Map<String, dynamic>),
     json['imageUrl'] as String,
     json['thumbnailImageUrl'] as String,
     json['releaseStatus'] as String,
     json['version'] as int,
     json['featured'] as bool,
-    (json['unityPackages'] as List)
-        ?.map((e) => e == null
-            ? null
-            : UnityPackages.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    (json['unityPackages'] as List<dynamic>)
+        .map((e) => UnityPackages.fromJson(e as Map<String, dynamic>))
+        .toList(),
     json['unityPackageUrl'] as String,
-    json['unityPackageUrlObject'] == null
-        ? null
-        : UnityPackageUrlObject.fromJson(
-            json['unityPackageUrlObject'] as Map<String, dynamic>),
+    UnityPackageUrlObject.fromJson(
+        json['unityPackageUrlObject'] as Map<String, dynamic>),
     json['created_at'] as String,
     json['updated_at'] as String,
   );
 }
 
-Map<String, dynamic> _$AvatarToJson(Avatar instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull('name', instance.name);
-  writeNotNull('description', instance.description);
-  writeNotNull('authorId', instance.authorId);
-  writeNotNull('authorName', instance.authorName);
-  writeNotNull('tags', instance.tags);
-  writeNotNull('assetUrl', instance.assetUrl);
-  writeNotNull('assetUrlObject', instance.assetUrlObject?.toJson());
-  writeNotNull('imageUrl', instance.imageUrl);
-  writeNotNull('thumbnailImageUrl', instance.thumbnailImageUrl);
-  writeNotNull('releaseStatus', instance.releaseStatus);
-  writeNotNull('version', instance.version);
-  writeNotNull('featured', instance.featured);
-  writeNotNull('unityPackages',
-      instance.unityPackages?.map((e) => e?.toJson())?.toList());
-  writeNotNull('unityPackageUrl', instance.unityPackageUrl);
-  writeNotNull(
-      'unityPackageUrlObject', instance.unityPackageUrlObject?.toJson());
-  writeNotNull('created_at', instance.createdAt);
-  writeNotNull('updated_at', instance.updatedAt);
-  return val;
-}
+Map<String, dynamic> _$AvatarToJson(Avatar instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+      'authorId': instance.authorId,
+      'authorName': instance.authorName,
+      'tags': instance.tags,
+      'assetUrl': instance.assetUrl,
+      'assetUrlObject': instance.assetUrlObject.toJson(),
+      'imageUrl': instance.imageUrl,
+      'thumbnailImageUrl': instance.thumbnailImageUrl,
+      'releaseStatus': instance.releaseStatus,
+      'version': instance.version,
+      'featured': instance.featured,
+      'unityPackages': instance.unityPackages.map((e) => e.toJson()).toList(),
+      'unityPackageUrl': instance.unityPackageUrl,
+      'unityPackageUrlObject': instance.unityPackageUrlObject.toJson(),
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+    };
 
 AssetUrlObject _$AssetUrlObjectFromJson(Map<String, dynamic> json) {
   return AssetUrlObject();
@@ -90,24 +72,16 @@ UnityPackages _$UnityPackagesFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$UnityPackagesToJson(UnityPackages instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull('assetUrl', instance.assetUrl);
-  writeNotNull('unityVersion', instance.unityVersion);
-  writeNotNull('unitySortNumber', instance.unitySortNumber);
-  writeNotNull('assetVersion', instance.assetVersion);
-  writeNotNull('platform', instance.platform);
-  writeNotNull('created_at', instance.createdAt);
-  return val;
-}
+Map<String, dynamic> _$UnityPackagesToJson(UnityPackages instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'assetUrl': instance.assetUrl,
+      'unityVersion': instance.unityVersion,
+      'unitySortNumber': instance.unitySortNumber,
+      'assetVersion': instance.assetVersion,
+      'platform': instance.platform,
+      'created_at': instance.createdAt,
+    };
 
 UnityPackageUrlObject _$UnityPackageUrlObjectFromJson(
     Map<String, dynamic> json) {

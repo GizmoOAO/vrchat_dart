@@ -3,7 +3,7 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import '../models/basic_auth.dart';
 
-Dio _instance;
+Dio? _instance;
 
 class HttpUtils {
   static const String _apiVersion = '1';
@@ -28,9 +28,9 @@ class HttpUtils {
       _instance = Dio(options);
 
       var cookieJar = CookieJar();
-      _instance.interceptors.add(CookieManager(cookieJar));
+      _instance!.interceptors.add(CookieManager(cookieJar));
     }
-    return _instance;
+    return _instance!;
   }
 
   static void clear() {
@@ -39,11 +39,11 @@ class HttpUtils {
 
   static Future<dynamic> request(
     String url, {
-    Map<String, dynamic> data,
-    Map<String, String> params,
-    Map<String, dynamic> urlParams,
-    String method,
-    BasicAuth basicAuth,
+    Map<String, dynamic>? data,
+    Map<String, String>? params,
+    Map<String, dynamic>? urlParams,
+    String? method,
+    BasicAuth? basicAuth,
   }) async {
     data = data ?? {};
     params = params ?? {};

@@ -13,11 +13,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
     json['displayName'] as String,
     json['userIcon'] as String,
     json['bio'] as String,
-    (json['bioLinks'] as List)?.map((e) => e as String)?.toList(),
+    (json['bioLinks'] as List<dynamic>).map((e) => e as String).toList(),
     json['currentAvatarImageUrl'] as String,
     json['currentAvatarThumbnailImageUrl'] as String,
     json['fallbackAvatar'] as String,
-    (json['tags'] as List)?.map((e) => e as String)?.toList(),
+    (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
     json['developerType'] as String,
     json['last_login'] as String,
     json['last_platform'] as String,
@@ -31,35 +31,25 @@ User _$UserFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$UserToJson(User instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull('username', instance.username);
-  writeNotNull('displayName', instance.displayName);
-  writeNotNull('userIcon', instance.userIcon);
-  writeNotNull('bio', instance.bio);
-  writeNotNull('bioLinks', instance.bioLinks);
-  writeNotNull('currentAvatarImageUrl', instance.currentAvatarImageUrl);
-  writeNotNull('currentAvatarThumbnailImageUrl',
-      instance.currentAvatarThumbnailImageUrl);
-  writeNotNull('fallbackAvatar', instance.fallbackAvatar);
-  writeNotNull('tags', instance.tags);
-  writeNotNull('developerType', instance.developerType);
-  writeNotNull('last_login', instance.lastLogin);
-  writeNotNull('last_platform', instance.lastPlatform);
-  writeNotNull('allowAvatarCopying', instance.allowAvatarCopying);
-  writeNotNull('date_joined', instance.dateJoined);
-  writeNotNull('isFriend', instance.isFriend);
-  writeNotNull('friendKey', instance.friendKey);
-  writeNotNull('location', instance.location);
-  writeNotNull('worldId', instance.worldId);
-  writeNotNull('instanceId', instance.instanceId);
-  return val;
-}
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'id': instance.id,
+      'username': instance.username,
+      'displayName': instance.displayName,
+      'userIcon': instance.userIcon,
+      'bio': instance.bio,
+      'bioLinks': instance.bioLinks,
+      'currentAvatarImageUrl': instance.currentAvatarImageUrl,
+      'currentAvatarThumbnailImageUrl': instance.currentAvatarThumbnailImageUrl,
+      'fallbackAvatar': instance.fallbackAvatar,
+      'tags': instance.tags,
+      'developerType': instance.developerType,
+      'last_login': instance.lastLogin,
+      'last_platform': instance.lastPlatform,
+      'allowAvatarCopying': instance.allowAvatarCopying,
+      'date_joined': instance.dateJoined,
+      'isFriend': instance.isFriend,
+      'friendKey': instance.friendKey,
+      'location': instance.location,
+      'worldId': instance.worldId,
+      'instanceId': instance.instanceId,
+    };

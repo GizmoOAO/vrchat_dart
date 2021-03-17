@@ -10,26 +10,15 @@ Auth _$AuthFromJson(Map<String, dynamic> json) {
   return Auth(
     json['ok'] as bool,
     json['token'] as String,
-    json['error'] == null
-        ? null
-        : Error.fromJson(json['error'] as Map<String, dynamic>),
+    Error.fromJson(json['error'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$AuthToJson(Auth instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ok', instance.ok);
-  writeNotNull('token', instance.token);
-  writeNotNull('error', instance.error?.toJson());
-  return val;
-}
+Map<String, dynamic> _$AuthToJson(Auth instance) => <String, dynamic>{
+      'ok': instance.ok,
+      'token': instance.token,
+      'error': instance.error.toJson(),
+    };
 
 Error _$ErrorFromJson(Map<String, dynamic> json) {
   return Error(
@@ -38,16 +27,7 @@ Error _$ErrorFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ErrorToJson(Error instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('message', instance.message);
-  writeNotNull('status_code', instance.statusCode);
-  return val;
-}
+Map<String, dynamic> _$ErrorToJson(Error instance) => <String, dynamic>{
+      'message': instance.message,
+      'status_code': instance.statusCode,
+    };

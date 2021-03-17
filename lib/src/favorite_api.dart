@@ -7,7 +7,7 @@ class FavoriteAPI {
   final String avatar = 'avatar';
 
   Future<List<FavoritesResult>> list(String favoritesType,
-      {int offset, int n}) async {
+      {int? offset, int? n}) async {
     var result = await HttpUtils.request('favorites', params: {
       'type': favoritesType,
       'offset': offset == null ? '0' : offset.toString(),

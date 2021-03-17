@@ -31,12 +31,12 @@ class UserAPI {
     return CurrentUser.fromJson(result);
   }
 
-  Future<bool> verify2FA(String code, {bool isRecovery}) async {
+  Future<bool> verify2FA(String code, {bool? isRecovery}) async {
     var result = await HttpUtils.request(
         'auth/twofactorauth/:verifyType/verify',
         method: HttpUtils.POST,
         urlParams: {
-          'verifyType': isRecovery ? 'opt' : 'totp',
+          'verifyType': isRecovery == null ? 'opt' : 'totp',
         },
         data: {
           code: code,
@@ -63,7 +63,8 @@ class UserAPI {
     return User.fromJson(result);
   }
 
-  Future<List<LimitedUser>> friends({bool offline, int offset, int n}) async {
+  Future<List<LimitedUser>> friends(
+      {bool? offline, int? offset, int? n}) async {
     var result = await HttpUtils.request('auth/user/friends', params: {
       'offline': offline != null ? offline.toString() : 'false',
       'offset': offset == null ? '0' : offset.toString(),

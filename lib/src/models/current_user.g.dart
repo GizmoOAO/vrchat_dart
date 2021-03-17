@@ -13,12 +13,10 @@ CurrentUser _$CurrentUserFromJson(Map<String, dynamic> json) {
     json['displayName'] as String,
     json['userIcon'] as String,
     json['bio'] as String,
-    (json['bioLinks'] as List)?.map((e) => e as String)?.toList(),
-    (json['pastDisplayNames'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PastDisplayNames.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    (json['bioLinks'] as List<dynamic>).map((e) => e as String).toList(),
+    (json['pastDisplayNames'] as List<dynamic>)
+        .map((e) => PastDisplayNames.fromJson(e as Map<String, dynamic>))
+        .toList(),
     json['hasEmail'] as bool,
     json['hasPendingEmail'] as bool,
     json['email'] as String,
@@ -27,8 +25,8 @@ CurrentUser _$CurrentUserFromJson(Map<String, dynamic> json) {
     json['emailVerified'] as bool,
     json['hasBirthday'] as bool,
     json['unsubscribe'] as bool,
-    (json['friends'] as List)?.map((e) => e as String)?.toList(),
-    json['friendGroupNames'] as List,
+    (json['friends'] as List<dynamic>).map((e) => e as String).toList(),
+    json['friendGroupNames'] as List<dynamic>,
     json['currentAvatarImageUrl'] as String,
     json['currentAvatarThumbnailImageUrl'] as String,
     json['fallbackAvatar'] as String,
@@ -36,20 +34,16 @@ CurrentUser _$CurrentUserFromJson(Map<String, dynamic> json) {
     json['currentAvatarAssetUrl'] as String,
     json['acceptedTOSVersion'] as int,
     json['steamId'] as String,
-    json['steamDetails'] == null
-        ? null
-        : SteamDetails.fromJson(json['steamDetails'] as Map<String, dynamic>),
+    SteamDetails.fromJson(json['steamDetails'] as Map<String, dynamic>),
     json['oculusId'] as String,
     json['hasLoggedInFromClient'] as bool,
     json['homeLocation'] as String,
     json['twoFactorAuthEnabled'] as bool,
-    json['feature'] == null
-        ? null
-        : Feature.fromJson(json['feature'] as Map<String, dynamic>),
+    Feature.fromJson(json['feature'] as Map<String, dynamic>),
     json['status'] as String,
     json['statusDescription'] as String,
     json['state'] as String,
-    (json['tags'] as List)?.map((e) => e as String)?.toList(),
+    (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
     json['developerType'] as String,
     json['last_login'] as String,
     json['last_platform'] as String,
@@ -57,69 +51,60 @@ CurrentUser _$CurrentUserFromJson(Map<String, dynamic> json) {
     json['date_joined'] as String,
     json['isFriend'] as bool,
     json['friendKey'] as String,
-    (json['onlineFriends'] as List)?.map((e) => e as String)?.toList(),
-    (json['activeFriends'] as List)?.map((e) => e as String)?.toList(),
-    (json['offlineFriends'] as List)?.map((e) => e as String)?.toList(),
+    (json['onlineFriends'] as List<dynamic>).map((e) => e as String).toList(),
+    (json['activeFriends'] as List<dynamic>).map((e) => e as String).toList(),
+    (json['offlineFriends'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 
-Map<String, dynamic> _$CurrentUserToJson(CurrentUser instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull('username', instance.username);
-  writeNotNull('displayName', instance.displayName);
-  writeNotNull('userIcon', instance.userIcon);
-  writeNotNull('bio', instance.bio);
-  writeNotNull('bioLinks', instance.bioLinks);
-  writeNotNull('pastDisplayNames',
-      instance.pastDisplayNames?.map((e) => e?.toJson())?.toList());
-  writeNotNull('hasEmail', instance.hasEmail);
-  writeNotNull('hasPendingEmail', instance.hasPendingEmail);
-  writeNotNull('email', instance.email);
-  writeNotNull('obfuscatedEmail', instance.obfuscatedEmail);
-  writeNotNull('obfuscatedPendingEmail', instance.obfuscatedPendingEmail);
-  writeNotNull('emailVerified', instance.emailVerified);
-  writeNotNull('hasBirthday', instance.hasBirthday);
-  writeNotNull('unsubscribe', instance.unsubscribe);
-  writeNotNull('friends', instance.friends);
-  writeNotNull('friendGroupNames', instance.friendGroupNames);
-  writeNotNull('currentAvatarImageUrl', instance.currentAvatarImageUrl);
-  writeNotNull('currentAvatarThumbnailImageUrl',
-      instance.currentAvatarThumbnailImageUrl);
-  writeNotNull('fallbackAvatar', instance.fallbackAvatar);
-  writeNotNull('currentAvatar', instance.currentAvatar);
-  writeNotNull('currentAvatarAssetUrl', instance.currentAvatarAssetUrl);
-  writeNotNull('acceptedTOSVersion', instance.acceptedTOSVersion);
-  writeNotNull('steamId', instance.steamId);
-  writeNotNull('steamDetails', instance.steamDetails?.toJson());
-  writeNotNull('oculusId', instance.oculusId);
-  writeNotNull('hasLoggedInFromClient', instance.hasLoggedInFromClient);
-  writeNotNull('homeLocation', instance.homeLocation);
-  writeNotNull('twoFactorAuthEnabled', instance.twoFactorAuthEnabled);
-  writeNotNull('feature', instance.feature?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('statusDescription', instance.statusDescription);
-  writeNotNull('state', instance.state);
-  writeNotNull('tags', instance.tags);
-  writeNotNull('developerType', instance.developerType);
-  writeNotNull('last_login', instance.lastLogin);
-  writeNotNull('last_platform', instance.lastPlatform);
-  writeNotNull('allowAvatarCopying', instance.allowAvatarCopying);
-  writeNotNull('date_joined', instance.dateJoined);
-  writeNotNull('isFriend', instance.isFriend);
-  writeNotNull('friendKey', instance.friendKey);
-  writeNotNull('onlineFriends', instance.onlineFriends);
-  writeNotNull('activeFriends', instance.activeFriends);
-  writeNotNull('offlineFriends', instance.offlineFriends);
-  return val;
-}
+Map<String, dynamic> _$CurrentUserToJson(CurrentUser instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'username': instance.username,
+      'displayName': instance.displayName,
+      'userIcon': instance.userIcon,
+      'bio': instance.bio,
+      'bioLinks': instance.bioLinks,
+      'pastDisplayNames':
+          instance.pastDisplayNames.map((e) => e.toJson()).toList(),
+      'hasEmail': instance.hasEmail,
+      'hasPendingEmail': instance.hasPendingEmail,
+      'email': instance.email,
+      'obfuscatedEmail': instance.obfuscatedEmail,
+      'obfuscatedPendingEmail': instance.obfuscatedPendingEmail,
+      'emailVerified': instance.emailVerified,
+      'hasBirthday': instance.hasBirthday,
+      'unsubscribe': instance.unsubscribe,
+      'friends': instance.friends,
+      'friendGroupNames': instance.friendGroupNames,
+      'currentAvatarImageUrl': instance.currentAvatarImageUrl,
+      'currentAvatarThumbnailImageUrl': instance.currentAvatarThumbnailImageUrl,
+      'fallbackAvatar': instance.fallbackAvatar,
+      'currentAvatar': instance.currentAvatar,
+      'currentAvatarAssetUrl': instance.currentAvatarAssetUrl,
+      'acceptedTOSVersion': instance.acceptedTOSVersion,
+      'steamId': instance.steamId,
+      'steamDetails': instance.steamDetails.toJson(),
+      'oculusId': instance.oculusId,
+      'hasLoggedInFromClient': instance.hasLoggedInFromClient,
+      'homeLocation': instance.homeLocation,
+      'twoFactorAuthEnabled': instance.twoFactorAuthEnabled,
+      'feature': instance.feature.toJson(),
+      'status': instance.status,
+      'statusDescription': instance.statusDescription,
+      'state': instance.state,
+      'tags': instance.tags,
+      'developerType': instance.developerType,
+      'last_login': instance.lastLogin,
+      'last_platform': instance.lastPlatform,
+      'allowAvatarCopying': instance.allowAvatarCopying,
+      'date_joined': instance.dateJoined,
+      'isFriend': instance.isFriend,
+      'friendKey': instance.friendKey,
+      'onlineFriends': instance.onlineFriends,
+      'activeFriends': instance.activeFriends,
+      'offlineFriends': instance.offlineFriends,
+    };
 
 PastDisplayNames _$PastDisplayNamesFromJson(Map<String, dynamic> json) {
   return PastDisplayNames(
@@ -128,19 +113,11 @@ PastDisplayNames _$PastDisplayNamesFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PastDisplayNamesToJson(PastDisplayNames instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('displayName', instance.displayName);
-  writeNotNull('updated_at', instance.updatedAt);
-  return val;
-}
+Map<String, dynamic> _$PastDisplayNamesToJson(PastDisplayNames instance) =>
+    <String, dynamic>{
+      'displayName': instance.displayName,
+      'updated_at': instance.updatedAt,
+    };
 
 SteamDetails _$SteamDetailsFromJson(Map<String, dynamic> json) {
   return SteamDetails(
@@ -164,34 +141,26 @@ SteamDetails _$SteamDetailsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SteamDetailsToJson(SteamDetails instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('steamid', instance.steamid);
-  writeNotNull('communityvisibilitystate', instance.communityvisibilitystate);
-  writeNotNull('profilestate', instance.profilestate);
-  writeNotNull('personaname', instance.personaname);
-  writeNotNull('profileurl', instance.profileurl);
-  writeNotNull('avatar', instance.avatar);
-  writeNotNull('avatarmedium', instance.avatarmedium);
-  writeNotNull('avatarfull', instance.avatarfull);
-  writeNotNull('personastate', instance.personastate);
-  writeNotNull('realname', instance.realname);
-  writeNotNull('primaryclanid', instance.primaryclanid);
-  writeNotNull('timecreated', instance.timecreated);
-  writeNotNull('personastateflags', instance.personastateflags);
-  writeNotNull('avatarhash', instance.avatarhash);
-  writeNotNull('gameextrainfo', instance.gameextrainfo);
-  writeNotNull('gameid', instance.gameid);
-  writeNotNull('commentpermission', instance.commentpermission);
-  return val;
-}
+Map<String, dynamic> _$SteamDetailsToJson(SteamDetails instance) =>
+    <String, dynamic>{
+      'steamid': instance.steamid,
+      'communityvisibilitystate': instance.communityvisibilitystate,
+      'profilestate': instance.profilestate,
+      'personaname': instance.personaname,
+      'profileurl': instance.profileurl,
+      'avatar': instance.avatar,
+      'avatarmedium': instance.avatarmedium,
+      'avatarfull': instance.avatarfull,
+      'personastate': instance.personastate,
+      'realname': instance.realname,
+      'primaryclanid': instance.primaryclanid,
+      'timecreated': instance.timecreated,
+      'personastateflags': instance.personastateflags,
+      'avatarhash': instance.avatarhash,
+      'gameextrainfo': instance.gameextrainfo,
+      'gameid': instance.gameid,
+      'commentpermission': instance.commentpermission,
+    };
 
 Feature _$FeatureFromJson(Map<String, dynamic> json) {
   return Feature(
@@ -199,15 +168,6 @@ Feature _$FeatureFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$FeatureToJson(Feature instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('twoFactorAuth', instance.twoFactorAuth);
-  return val;
-}
+Map<String, dynamic> _$FeatureToJson(Feature instance) => <String, dynamic>{
+      'twoFactorAuth': instance.twoFactorAuth,
+    };

@@ -11,22 +11,14 @@ FavoritesResult _$FavoritesResultFromJson(Map<String, dynamic> json) {
     json['id'] as String,
     json['type'] as String,
     json['favoriteId'] as String,
-    (json['tags'] as List)?.map((e) => e as String)?.toList(),
+    (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 
-Map<String, dynamic> _$FavoritesResultToJson(FavoritesResult instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull('type', instance.type);
-  writeNotNull('favoriteId', instance.favoriteId);
-  writeNotNull('tags', instance.tags);
-  return val;
-}
+Map<String, dynamic> _$FavoritesResultToJson(FavoritesResult instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'type': instance.type,
+      'favoriteId': instance.favoriteId,
+      'tags': instance.tags,
+    };
